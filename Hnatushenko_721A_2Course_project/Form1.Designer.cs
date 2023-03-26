@@ -1,5 +1,5 @@
 ﻿
-namespace Hnatushenko_721A_2Course_project1
+namespace Hnatushenko_721A_2Course_project
 {
     partial class Form1
     {
