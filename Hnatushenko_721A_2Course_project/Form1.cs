@@ -45,6 +45,7 @@ namespace Hnatushenko_721A_2Course_project
                 tClock.Start();
                 bStart.Text = "Стоп";
                 this.Mode = false;
+                пускToolStripMenuItem.Text = "Стоп";
             }
             else
             {
@@ -56,6 +57,7 @@ namespace Hnatushenko_721A_2Course_project
                 MajorObject.Write(tbInput.Text);
                 MajorObject.Task();
                 label1.Text = MajorObject.Read();
+                пускToolStripMenuItem.Text = "Старт";
             }
         }
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
@@ -80,6 +82,54 @@ namespace Hnatushenko_721A_2Course_project
             string s;
             s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
             MessageBox.Show(s, "Час роботи програми");
+        }
+        private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About A = new About();
+            A.ShowDialog();
+        }
+
+        private void зберегтиЯкToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sfdSave.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(sfdSave.FileName);
+            }
+        }
+
+        private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ofdOpen.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(ofdOpen.FileName);
+            }
+
+        }
+
+        private void проНакопичувачіToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] disks = System.IO.Directory.GetLogicalDrives();
+
+            string disk = "";
+            for (int i = 0; i < disks.Length; i++)
+            {
+                try
+                {
+                    System.IO.DriveInfo D = new System.IO.DriveInfo(disks[i]);
+                    disk += D.Name + "-" + (D.TotalSize / Math.Pow(1024, 3)).ToString() + "-" + (D.TotalFreeSpace / Math.Pow(1024, 3)).ToString() + (char)13;
+
+                }
+                catch
+                {
+                    disk += disks[i] + "- не готовий" + (char)13;
+                }
+            }
+            MessageBox.Show(disk, "Накопичувачі");
         }
     }
 }
