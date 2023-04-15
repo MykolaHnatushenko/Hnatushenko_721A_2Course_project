@@ -30,6 +30,7 @@ namespace Hnatushenko_721A_2Course_project
         {
             MajorObject = new MajorWork();
             MajorObject.SetTime();
+            MajorObject.Modify = false;
             About A = new About();
             A.tAbout.Start();
             A.ShowDialog();
@@ -104,11 +105,11 @@ namespace Hnatushenko_721A_2Course_project
 
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ofdOpen.ShowDialog() == DialogResult.OK)
+            if (sfdSave.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна збереженняфайлу
             {
-                MessageBox.Show(ofdOpen.FileName);
+                MajorObject.WriteSaveFileName(sfdSave.FileName); // написання імені файлу
+                MajorObject.SaveToFile(); // метод збереження в файл
             }
-
         }
 
         private void проНакопичувачіToolStripMenuItem_Click(object sender, EventArgs e)
