@@ -107,10 +107,11 @@ namespace Hnatushenko_721A_2Course_project
 
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (sfdSave.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна збереженняфайлу
+            if (ofdOpen.ShowDialog() == DialogResult.OK)// Виклик діалогового вікна збереженняфайлу
             {
-                MajorObject.WriteSaveFileName(sfdSave.FileName); // написання імені файлу
-                MajorObject.SaveToFile(); // метод збереження в файл
+                MajorObject.WriteOpenFileName(ofdOpen.FileName); // відкриття 
+                MajorObject.ReadFromFile(dgwOpen); // читання даних з файлу
+
             }
         }
 
@@ -157,6 +158,11 @@ namespace Hnatushenko_721A_2Course_project
             if (MajorObject.Modify)
                 if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",MessageBoxButtons.YesNo) == DialogResult.No)
                     e.Cancel = true; // припинити закриття
+        }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            MajorObject.Find(tbSearch.Text);
         }
     }
 }
