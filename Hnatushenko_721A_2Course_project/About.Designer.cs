@@ -33,6 +33,8 @@ namespace Hnatushenko_721A_2Course_project
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tAbout = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -40,7 +42,7 @@ namespace Hnatushenko_721A_2Course_project
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(200, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 102);
+            this.label1.Size = new System.Drawing.Size(157, 96);
             this.label1.TabIndex = 0;
             this.label1.Text = "Розробив\r\nСтудент групи ІКМ721а\r\nГнатушенко Микола\r\n\r\nТекст завдання:\r\nТекст";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -60,11 +62,25 @@ namespace Hnatushenko_721A_2Course_project
             this.tAbout.Interval = 10000;
             this.tAbout.Tick += new System.EventHandler(this.tAbout_Tick);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(53, 381);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(692, 23);
+            this.progressBar1.TabIndex = 2;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "About";
@@ -79,5 +95,7 @@ namespace Hnatushenko_721A_2Course_project
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Timer tAbout;
+        public System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
