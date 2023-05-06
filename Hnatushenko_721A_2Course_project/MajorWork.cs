@@ -75,6 +75,7 @@ namespace Hnatushenko_721A_2Course_project
                 D.Data = this.Data;
                 D.Result = Convert.ToString(this.Result);
                 D.Key = Key;
+                Key++;
                 BinaryFormatter BF = new BinaryFormatter(); // створення об'єкта       
                 BF.Serialize(S, D);
                 S.Flush(); // очищення буфера потоку
@@ -102,10 +103,8 @@ namespace Hnatushenko_721A_2Course_project
                 BinaryFormatter BF = new BinaryFormatter(); // створення об'єкту для форматування
                                                             //формуємо таблицю
                 System.Data.DataTable MT = new System.Data.DataTable();
-                System.Data.DataColumn cKey = new
-                System.Data.DataColumn("Ключ");// формуємо колонку "Ключ"
-                System.Data.DataColumn cInput = new
-                System.Data.DataColumn("Вхідні дані");// формуємо колонку "Вхідні дані"
+                System.Data.DataColumn cKey = new System.Data.DataColumn("Ключ");// формуємо колонку "Ключ"
+                System.Data.DataColumn cInput = new System.Data.DataColumn("Вхідні дані");// формуємо колонку "Вхідні дані"
                 System.Data.DataColumn cResult = new System.Data.DataColumn("Результат");// формуємо колонку "Результат"
                 MT.Columns.Add(cKey);// додавання ключа
                 MT.Columns.Add(cInput);// додавання вхідних даних
@@ -140,6 +139,7 @@ namespace Hnatushenko_721A_2Course_project
                 if (!File.Exists(this.SaveFileName)) // існує файл?
                 {
                     Key = 1;
+                    MessageBox.Show("1");
                     return;
                 }
                 Stream S; // створення потоку
@@ -154,6 +154,7 @@ namespace Hnatushenko_721A_2Course_project
                     if (D == null) break;
                     Key = D.Key;
                 }
+                MessageBox.Show("1+");
                 Key++;
                 S.Close();
             }
