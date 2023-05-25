@@ -489,5 +489,39 @@ namespace Hnatushenko_721A_2Course_project
                 SetText(InputData);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double[] mas = new double[3];
+            double average = 1;
+
+            mas[0] = Convert.ToDouble(textBox1.Text);
+            average *= mas[0];
+
+            mas[1] = Convert.ToDouble(textBox2.Text);
+            average *= mas[1];
+
+            mas[2] = Convert.ToDouble(textBox3.Text);
+            average *= mas[2];
+
+
+            average /= 3;
+
+
+            label8.Text+= "Середнє геометричне: " + average+"\n";
+
+            // Зберігаємо дані у файл
+            string filePath = "f.txt";
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    writer.WriteLine("Число №" + (i + 1) + " :" + mas[i]);
+                }
+                writer.WriteLine("Середнє геометричне: " + average);
+            }
+
+            label8.Text += "Дані збережено у файлі " + filePath;
+        }
     }
 }
