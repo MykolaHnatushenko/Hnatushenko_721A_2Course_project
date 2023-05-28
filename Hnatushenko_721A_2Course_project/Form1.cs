@@ -120,13 +120,28 @@ namespace Hnatushenko_721A_2Course_project
                 пускToolStripMenuItem.Text = "Старт";
             }
         }
+        int numCount = 0;
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             tClock.Stop();
             tClock.Start();
-            if ((e.KeyChar >= '0') & (e.KeyChar <= '9') | (e.KeyChar == (char)8))
+
+
+
+            if ((e.KeyChar >= '0') & (e.KeyChar <= '9') | e.KeyChar == ' ' | (e.KeyChar == (char)8))
             {
+                if (numCount < 4 && e.KeyChar == ' ')
+                {
+                    numCount++;
+                }
+                if (numCount == 3)
+                {
+                    tbInput.Enabled = false;
+
+                }
+
                 return;
+
             }
             else
             {
@@ -134,6 +149,7 @@ namespace Hnatushenko_721A_2Course_project
                 MessageBox.Show("Неправильний символ", "Помилка");
                 tClock.Start();
                 e.KeyChar = (char)0;
+
             }
         }
 

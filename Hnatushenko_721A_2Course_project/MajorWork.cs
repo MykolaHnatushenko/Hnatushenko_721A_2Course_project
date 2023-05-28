@@ -92,14 +92,17 @@ namespace Hnatushenko_721A_2Course_project
         }
         public void Task() // метод реалізації програмного завдання
         {
-            if (this.Data.Length > 5)
-            {
-                this.Result = Convert.ToString(true);
-            }
-            else
-            {
-                this.Result = Convert.ToString(false);
-            }
+            string[] numbers = this.Data.Split(' ');
+
+            double number1, number2, number3;
+            bool parseSuccess1 = double.TryParse(numbers[0], out number1);
+            bool parseSuccess2 = double.TryParse(numbers[1], out number2);
+            bool parseSuccess3 = double.TryParse(numbers[2], out number3);
+            double geometricMean = Math.Pow(number1 * number2 * number3, 1.0 / 3.0);
+
+            this.Result = Convert.ToString(geometricMean);
+
+
             this.Modify = true; // Дозвіл запису
         }
         public void SetTime() // метод запису часу початку роботи програми
